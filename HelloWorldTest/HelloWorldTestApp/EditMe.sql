@@ -39,3 +39,7 @@ GO
 
 
 --TODO: Create a view that shows all active alarms (Timestamp, Code, Description) for machine with type 1
+CREATE VIEW [Active Alarms] AS
+SELECT [Timestamp], [Code], [Description]
+FROM [dbo].[Alarm], [dbo].[Machine]
+WHERE [Type] = 1;
