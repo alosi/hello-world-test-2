@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +11,56 @@ namespace HelloWorldTestApp
     /// </summary>
     class EditMe
     {
+
         /// <summary>
         /// Generate an array of random integer with 100 elements
         /// </summary>
-        public IEnumerable<int> RandomArray
+        /// 
+        int Min = 0;
+        int number = 0;
+        public static int[] RandomArray(int count)
         {
-            get
+            Random random = new Random();
+            int[] Array = new int[count];
+
+            for (int i = 0; i < count; ++i)
             {
-                return Array.Empty<int>(); //TODO: Edit this in order to create an array of random integers
+                Array[i] = random.Next(0, 1000);
             }
+
+            return Array;
         }
 
         /// <summary>
         /// Obtain the minumum value of RandomArray
         /// </summary>
-        public int RandomMin
+        public static int RandomMin(int[] Array)
         {
-            get
+            int Min = Array[0];
+            for (int i = 0; i < 100; ++i)
             {
-                return int.MinValue; //TODO: Edit this in order to return RandomArray minimum value
+                if (Array[i] < Min)
+                {
+                    Min = Array[i];
+                }
             }
+            return Min;
+        }
+
+    }
+
+    class ProgramTest
+    {
+        static void Main(string[] args)
+        {
+            int[] Array = EditMe.RandomArray(100);
+
+            for (int i = 0; i < Array.Length; i++)
+                Console.WriteLine(Array[i]);
+
+            int Min = EditMe.RandomMin(Array);
+            Console.WriteLine();
+            Console.WriteLine(Min);
         }
     }
 }
